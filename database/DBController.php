@@ -51,9 +51,9 @@ class DBController {
 
     //method for closing MySQL connection
     protected function closeConnection(){ //fn destructure
-    if($this->con != null){
-        $this->con->close();
-        $this->con = null;
+    if($this->conn != null){
+        $this->conn->close();
+        $this->conn = null;
     }
 }
 
