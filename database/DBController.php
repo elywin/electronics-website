@@ -1,4 +1,6 @@
 <?php
+
+putenv("CLEARDB_DATABASE_URL = mysql://b13d259429335f:6736161d@us-cdbr-east-05.cleardb.net/heroku_c0a1fdbed2fb732?reconnect=true");
 class DBController {
     //database connection properties
     /*protected $host = 'localhost';
@@ -7,20 +9,15 @@ class DBController {
     protected $database = 'electronics';*/
 
     //Get Heroku ClearDB connection information
-    protected $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    protected $cleardb_server = $cleardb_url["host"];
-    protected $cleardb_username = $cleardb_url["user"];
-    protected $cleardb_password = $cleardb_url["pass"];
-    protected $cleardb_db = substr($cleardb_url["path"],1);
-    protected $active_group = 'default';
-    protected $query_builder = TRUE;
+    
     
     
     // Connect to DB
     //create a constructor to initialize the connection of the database
     //connection property
-    public $con = null;
+    //public $con = null;
     
+    public $conn = null;
     
     //call constructor
     public function __construct(){
@@ -31,11 +28,19 @@ class DBController {
         }*/
         //echo "Connection successfull";
 
-        $this->conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+        $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+     $cleardb_server = $cleardb_url["host"];
+     $cleardb_username = $cleardb_url["user"];
+     $cleardb_password = $cleardb_url["pass"];
+     $cleardb_db = substr($cleardb_url["path"],1);
+     $active_group = 'default';
+     $query_builder = TRUE;
+
+        $this->conn = mysqli_connect($this->cleardb_server, $this->cleardb_username, $this->cleardb_password, $this->cleardb_db);
     if($this->conn->connect_error){
             echo "Fail" .$this->conn->connect_error;        
         }
-        echo "Connection successfull";
+        echo "Connection successfull dyj";
         
     }
     
@@ -53,7 +58,7 @@ class DBController {
 }
 
 
-    public $conn = null;
+    
     //method for connecting heroku clearDB
     protected function clearDatabase(){
         
