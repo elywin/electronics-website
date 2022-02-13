@@ -6,7 +6,7 @@ class Product{
 
     public function __construct(DBController $db){ //from DBController class - now like an objct to access $con
         //use Dependency Injection to access $con connection
-        if(!isset($db->conn)) return null;
+        if(!isset($db->con)) return null;
         //call public $db and initialize it to the $db in __construct(DB... $db)
         $this->db = $db;
     }
@@ -17,7 +17,7 @@ class Product{
     //     $this->db->con->query("SELECT * FROM product"); //pass the SQL query
     // }
     public function getData($table= 'product'){
-       $result =  $this->db->conn->query("SELECT * FROM {$table}");
+       $result =  $this->db->con->query("SELECT * FROM {$table}");
        $resultArray = array();
 
        //while loop - get associative array(key-value) 
