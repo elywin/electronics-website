@@ -8,8 +8,10 @@ shuffle($product_shuffle);
 
 //request method post
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-//CAll method addToCart
-$Cart->addToCart($_POST['item_id'], $_POST['user_id']);
+    if(isset($_POST['top_sale_submit'])){
+        //CAll method addToCart
+        $Cart->addToCart($_POST['item_id'], $_POST['user_id']);
+    }
 }
 
 ?>
