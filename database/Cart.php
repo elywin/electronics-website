@@ -76,4 +76,16 @@ class Cart{
             }
         }
 
+        //get item_id of shopping cart list
+        //new array and store all items
+        public function getCartId($cartArray = null, $key = "item_id"){
+            if($cartArray != null){
+                $card_id = array_map(function($value) use($key){
+                    return $value[$key];
+                }, $cartArray);
+                return $card_id;
+            }
+        }
+        
+
 }

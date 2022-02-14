@@ -30,3 +30,4 @@ $Cart = new Cart($db);
 //     "item_id" => 2
 // );
 // $Cart->insertIntoCart($arr);
+//print_r($Cart->getCartId($product->getData('cart')));
