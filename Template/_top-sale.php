@@ -10,7 +10,7 @@ shuffle($product_shuffle);
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(isset($_POST['top_sale_submit'])){
         //CAll method addToCart
-        $Cart->addToCart($_POST['item_id'], $_POST['user_id']);
+        $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
     }
 }
 

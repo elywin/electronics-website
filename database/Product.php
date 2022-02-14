@@ -29,4 +29,21 @@ class Product{
        return $resultArray;
     }
 
+    //get products using item id
+    public function getProduct($item_id = null, $table = 'product'){
+        if(isset($item_id)){
+            $result = $this->db->con->query("SELECT * FROM {$table} WHERE item_id={$item_id}");
+            
+            $resultArray = array();
+
+            //while loop - get associative array(key-value) 
+            //it  fetches product one by one
+            while($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $item;
+        }
+        
+        return $resultArray;
+        }
+    }
+
 }

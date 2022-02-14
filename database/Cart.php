@@ -47,10 +47,32 @@ class Cart{
                 $result = $this->insertIntoCart($params);
                 if($result){
                     //reload page
-                    header("Location: ".$_SERVER['PHP_SELF']); 
+                    header("Location:".$_SERVER['PHP_SELF']); 
                 }
                 
                 
+            }
+        }
+
+        //calculate subtotal
+        public function getSum($arr){
+            if(isset($arr)){
+                $sum = 0;
+                foreach($arr as $item){
+                    $sum += floatval($item[0]);
+                }
+                return sprintf('%.2f',$sum);
+            }
+        }
+
+        //delete cart item using cart item id
+        public function deleteCart($item_id = null, $table ='cart'){
+            if($item_id != null){
+                $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id={$item_id}");
+                if($result){
+                    header("Location:".$_SERVER['PHP_SELF']);
+                }
+                return $result;
             }
         }
 
