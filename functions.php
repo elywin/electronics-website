@@ -23,8 +23,8 @@ $product->getData();
 
 //create object of Cart 
 $Cart = new Cart($db);
-$arr = array(
-    'user_id' => 1,
-    'item_id' => 2
-);
-$Cart->insertintoCart();
+// $arr = array(
+//     "user_id" => 1,
+//     "item_id" => 2
+// );
+// $Cart->insertIntoCart($arr);
