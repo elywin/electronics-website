@@ -16,8 +16,9 @@ $db = new DBController();
 
 //Product obj
 $product = new Product($db);
+$product_shuffle = $product->getData(); //added the product shuffle global for all to use
 //print_r($product->getData());
-$product->getData();
+//$product->getData();
 
 
 

@@ -2,7 +2,7 @@
 
 <?php
 //$product from functions.php
-$product_shuffle = $product->getData();
+//$product_shuffle = $product->getData();
 //shuffle products to avoid the sae sequency of Products - use pHP shuffle()
 shuffle($product_shuffle);
 

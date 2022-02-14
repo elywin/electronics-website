@@ -6,6 +6,9 @@
         <!-- Shopping Cart items -->
         <div class="row">
             <div class="col-sm-9">
+                <?php 
+                    
+                ?>
                 <!-- cart item -->
                 <div class="row border-top py-3 mt-3">
                     <div class="col-sm-2">
