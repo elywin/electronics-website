@@ -61,20 +61,29 @@ $(document).ready(function () {
     //let $qty_input = $(".qty .qty-input");
 
     //click on the qty_up button
-    $qty_up.click(function (e) {
-        let $qty_input = $(`.qty-input[data-id='${$(this).data("id")}]`);
+    $qty_up.click(function(e) {
+
+        //change product price using ajax call
+        $.ajax({
+            uri: "template/ajax.php", type: 'post', data: { itemid: $(this).data("id") }, success: function (result) {
+                //console.log(result); 
+            }
+        })
+
+
+        let $qty_input = $(`.qy-input[data-id='${$(this).data("id")}]`);
         if($qty_input.val() >= 1 && $qty_input.val() <= 9) {
-            $qty_input.val(function (i, oldVal) {
+            $qty_input.val(function(i, oldVal) {
                 return ++oldVal;
             });
         } 
     });
 
     //click on the qty_down button
-    $qty_down.click(function (e) {
+    $qty_down.click(function(e) {
         let $qty_input = $(`.qty-input[data-id='${$(this).data("id")}]`);
         if ($qty_input.val() > 1 && $qty_input.val() <= 10) {
-            $qty_input.val(function (i, oldVal) {
+            $qty_input.val(function(i, oldVal) {
                 return --oldVal;
             });
         }

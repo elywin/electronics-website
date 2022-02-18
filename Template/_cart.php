@@ -52,13 +52,15 @@
                         <!-- product quantity -->
                         <div class="qty d-flex pt-2">
                             <div class="d-flex font-raleway w-25">
-                                <button class="qty-up border  color-primary" data-id="pro1"> <i class="fas fa-plus"></i>
+                                <button class="qty-up border bg-light color-primary"
+                                    data-id="<?php  echo $item['item_id'] ?? '0'; ?>"> <i class="fas fa-plus"></i>
                                 </button>
-                                <input type="text" data-id="pro1"
-                                    class="qty-input border text-center px-2 w-50 bg-light" disabled value="1"
+                                <input type="text" data-id="<?php  echo $item['item_id'] ?? '0'; ?>"
+                                    class="qty-input border bg-light text-center px-2 w-50 bg-light" disabled value="1"
                                     placeholder="1">
-                                <button class="qty-down border color-primary" data-id="pro1"> <i
-                                        class="fas fa-minus"></i> </button>
+                                <button class="qty-down border bg-light color-primary"
+                                    data-id="<?php  echo $item['item_id'] ?? '0'; ?>"> <i class="fas fa-minus"></i>
+                                </button>
                             </div>
 
                             <form action="" method="post">
