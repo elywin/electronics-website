@@ -79,7 +79,8 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="font-size-20 text-danger font-os">
-                            $ <span class="product_price"><?php echo $item['item_price'] ?? 0 ?></span>
+                            $ <span data-id="<?php  echo $item['item_id'] ?? '0'; ?>"
+                                class="product_price"><?php echo $item['item_price'] ?? 0 ?></span>
                         </div>
                     </div>
                 </div>

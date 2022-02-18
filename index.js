@@ -63,25 +63,34 @@ $(document).ready(function () {
     //click on the qty_up button
     $qty_up.click(function(e) {
 
+        let $qty_input = $(`.qy-input[data-id='${$(this).data("id")}']`);
+        let $price = $(`.product_price[data-id='${$(this).data("id")}']`);
+
         //change product price using ajax call
-        $.ajax({
-            uri: "template/ajax.php", type: 'post', data: { itemid: $(this).data("id") }, success: function (result) {
-                //console.log(result); 
-            }
-        })
+        $.ajax({url: "template/ajax.php", type: 'post', data: { itemid: $(this).data("id") }, success: function (result) {
+                //console.log(result);
+                //fn to convert result into object
+                let obj = JSON.parse(result);
+                let item_price = obj[0]['item_price'];
 
+                if($qty_input.val() >= 1 && $qty_input.val() <= 9) {
+                    $qty_input.val(function (i, oldVal) {
+                    return ++oldVal;
+                });
+                }//closed if statement for increment
 
-        let $qty_input = $(`.qy-input[data-id='${$(this).data("id")}]`);
-        if($qty_input.val() >= 1 && $qty_input.val() <= 9) {
-            $qty_input.val(function(i, oldVal) {
-                return ++oldVal;
-            });
-        } 
+        
+            //increase price of the product
+            $price.text(parseInt(item_price * $qty_input.val()).toFixed(2));
+            
+            
+        }}); //closing ajax request
+        
     });
 
     //click on the qty_down button
     $qty_down.click(function(e) {
-        let $qty_input = $(`.qty-input[data-id='${$(this).data("id")}]`);
+        let $qty_input = $(`.qty-input[data-id='${$(this).data("id")}']`);
         if ($qty_input.val() > 1 && $qty_input.val() <= 10) {
             $qty_input.val(function(i, oldVal) {
                 return --oldVal;
